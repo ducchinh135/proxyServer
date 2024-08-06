@@ -11,12 +11,16 @@ app.use(bodyParser.json());
 
 app.post("/askai", async (req, res) => {
   try {
-    const response = await axios.post("https://aichat.youxiong.win", req.body, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.API_KEY}`, // Thay thế với cách bạn cấu hình API key
-      },
-    });
+    const response = await axios.post(
+      "https://aichat.youxiong.win/askai",
+      req.body,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.API_KEY}`, // Thay thế với cách bạn cấu hình API key
+        },
+      }
+    );
     res.json(response.data);
   } catch (error) {
     res.status(error.response?.status || 500).send(error.message);
